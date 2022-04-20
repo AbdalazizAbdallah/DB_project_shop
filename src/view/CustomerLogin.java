@@ -3,6 +3,7 @@ package view;
 import controller.interfaceListeners.IdentifierCustomerListener;
 import controller.viewsControllers.CustomerLoginController;
 import javax.swing.JOptionPane;
+import model.Customer;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -243,7 +244,7 @@ public class CustomerLogin extends javax.swing.JFrame {
 
             
              */
-            //this.identifierCustomerListener.idCustomerListener(/*id customer*/);
+            //this.identifierCustomerListener.idCustomerListener(new Customer("ll", "abdalziz", "11", "11"));
         } else {
             throw new Exception("Watch out !!\n" + "You can not leave behind an empty field");
         }

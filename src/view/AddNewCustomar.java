@@ -221,11 +221,12 @@ public class AddNewCustomar extends javax.swing.JFrame {
                 String idCustomer = jTextField5.getText();
                 //genrate password consist five digits randomly
                 String password = ConstantHelper.getNewPassword();
-
+                String encrptPassword = ConstantHelper.encryptPass(password);
+                
                 boolean checkIDvalid = ConstantHelper.checkIDvalid(idCustomer);
 
                 if (checkIDvalid) {
-                    Customer customer = new Customer(idCustomer, name, address, user, password);
+                    Customer customer = new Customer(idCustomer, name, address, user, encrptPassword);
                     boolean insertation = customerActionListener.insertNewCustomerListener(customer);
                     if (insertation) {
                         JOptionPane.showMessageDialog(this, "Customer adding susscefly \n YOUR password: "+password);
