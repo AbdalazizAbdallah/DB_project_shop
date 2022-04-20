@@ -31,6 +31,15 @@ public Customer(String customerId,String customerName, String address, String us
    myFavourite  = new ArrayList<>();
 }
 
+public Customer(String customerId,String customerName, String address, String userName) {
+   this.customerId = customerId;
+   this.customerName = customerName;
+   this.address = address;
+   this.userName = userName;
+   cart = new ArrayList<>();
+   myFavourite  = new ArrayList<>();
+}
+
 
 public String getCustomerName() {
     return customerName;

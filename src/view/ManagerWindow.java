@@ -1,12 +1,13 @@
 package view;
 
-import Helpers.DBConnection;
-import controller.InsertNewCustomerActionListener;
-import controller.InsertNewDepartmentActionListener;
-import controller.InsertNewProductActionListener;
-import controller.UpdateCustomerActionListener;
-import controller.UpdateDepartmentActionListener;
-import controller.UpdateProductActionListener;
+import model.DBConnection;
+import controller.interfaceListeners.InsertNewCustomerActionListener;
+import controller.interfaceListeners.InsertNewDepartmentActionListener;
+import controller.interfaceListeners.InsertNewProductActionListener;
+import controller.interfaceListeners.UpdateCustomerActionListener;
+import controller.interfaceListeners.UpdateDepartmentActionListener;
+import controller.interfaceListeners.UpdateProductActionListener;
+import controller.viewsControllers.ManagerWindowController;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.util.ArrayList;
@@ -44,16 +45,16 @@ public class ManagerWindow extends javax.swing.JFrame {
     private AddNewCustomar addNewCustomar = null;
     private UpdateCustomer updateCustomer = null;
 
-    private DBConnection dBConnection;
 
+    private ManagerWindowController managerWindowController;
     public ManagerWindow() {
 
         initComponents();
-        dBConnection = DBConnection.getInstance();
         
         // TODO :  "ManagerWindow class" remove comment when finish from selection query
         //addInListDepartment();
         //addInListCustomer();
+        managerWindowController = new ManagerWindowController();
         this.setLocationRelativeTo(null);
 
     }
@@ -108,10 +109,8 @@ public class ManagerWindow extends javax.swing.JFrame {
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
         jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -478,10 +477,6 @@ public class ManagerWindow extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(5, 5, 78));
         jLabel14.setText("User Name : ");
 
-        jLabel15.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(5, 5, 78));
-        jLabel15.setText("Password : ");
-
         jButton6.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(5, 5, 78));
         jButton6.setText("New Customer");
@@ -500,10 +495,6 @@ public class ManagerWindow extends javax.swing.JFrame {
             }
         });
 
-        jPasswordField1.setEditable(false);
-        jPasswordField1.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(5, 5, 78));
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -511,6 +502,15 @@ public class ManagerWindow extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(136, 136, 136)
+                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(99, 99, 99)
+                                .addComponent(jButton7)))
+                        .addContainerGap(317, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jList3, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -530,26 +530,11 @@ public class ManagerWindow extends javax.swing.JFrame {
                                     .addGap(18, 18, 18)
                                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                            .addComponent(jLabel15)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                            .addComponent(jLabel14)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel14)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(148, 148, 148))))
-                        .addGap(41, 41, 41))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(136, 136, 136)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(99, 99, 99)
-                                .addComponent(jButton7)))
-                        .addContainerGap(317, Short.MAX_VALUE))))
+                        .addGap(37, 37, 37))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -559,9 +544,14 @@ public class ManagerWindow extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jList3, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jList3, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
+                        .addGap(58, 58, 58)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -577,15 +567,7 @@ public class ManagerWindow extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         jTabbedPane1.addTab("Customer", jPanel3);
@@ -648,11 +630,10 @@ public class ManagerWindow extends javax.swing.JFrame {
                     @Override
                     public void updateDepartmentListener(Department Department) {
                         // TODO : "ManagerWindow class" make query to update Department in DB and reload all department in JLIST 
-                        // query must be method created in DBConnection class 
+                        // query must be method created in DAO class 
                         // here update query function 
-                        // use object dBConnection to access  all query methods
 
-                        //dBConnection.
+                        // call Functions from controllers "the controller define above"
                         //don't remove this
                         addInListDepartment();
 
@@ -670,10 +651,10 @@ public class ManagerWindow extends javax.swing.JFrame {
                 public boolean insertNewDepartmentListener(Department department) {
 
                     // TODO : "ManagerWindow class" make query to add new Department in DB and reload all department in JLIST
-                    // query must be method created in DBConnection class 
+                    // query must be method created in DAO class 
                     // here Insert query function if the insertation successfully return true
-                    // use object dBConnection to access  all query methods
-                    //dBConnection.
+                    
+                    // call Functions from controllers "the controller define above"
                     //don't remove this
                     addInListDepartment();
 
@@ -691,10 +672,10 @@ public class ManagerWindow extends javax.swing.JFrame {
                 public boolean insertNewCustomerListener(Customer customer) {
 
                     // TODO : "ManagerWindow class" make query to add new customer in DB and reload all customer in JLIST
-                    // query must be method created in DBConnection class 
+                    // query must be method created in DAO class 
                     // here Insert query function if the insertation successfully return true
-                    // use object dBConnection to access  all query methods
-                    //dBConnection.
+
+                    // call Functions from controllers "the controller define above"
                     //don't remove this
                     addInListCustomer();// reload customers
 
@@ -712,11 +693,10 @@ public class ManagerWindow extends javax.swing.JFrame {
                     @Override
                     public void updateCustomerListener(Customer customer) {
                         // TODO : "ManagerWindow class" make query to update customer in DB and reload all customers in JLIST 
-                        // query must be method created in DBConnection class 
+                        // query must be method created in DAO class 
                         // here update query function 
-                        // use object dBConnection to access  all query methods
 
-                        //dBConnection.
+                        // call Functions from controllers "the controller define above"
                         //don't remove this
                         addInListCustomer();
                     }
@@ -736,10 +716,10 @@ public class ManagerWindow extends javax.swing.JFrame {
                     public void updateProductListener(Product product) {
 
                         // TODO : "ManagerWindow class" make query to update product in DB and reload all product for specific department in JLIST 
-                        // query must be method created in DBConnection class 
+                        // query must be method created in DAO class 
                         // here update query function
-                        // use object dBConnection to access  all query methods
-                        //dBConnection.
+                        
+                        // call Functions from controllers "the controller define above"
                         //don't remove this
                         addInListProduct(product.getDepartmentID());
                     }
@@ -759,12 +739,10 @@ public class ManagerWindow extends javax.swing.JFrame {
                 public boolean insertNewProductListener(Product product, String idDepartment) {
 
                     // TODO : "ManagerWindow class" make query to add new product in DB accroding idDepartment and reload all product in JLIST
-                    // query must be method created in DBConnection class 
+                    // query must be method created in DAO class 
                     // here Insert query function if the insertation successfully return true
                     
-                    
-                    // use object dBConnection to access  all query methods
-                    //dBConnection.
+                    // call Functions from controllers "the controller define above"
                     //don't remove this
                     addInListProduct(idDepartment);
                     return false;// if the insertation fail
@@ -807,7 +785,6 @@ public class ManagerWindow extends javax.swing.JFrame {
             this.jTextField6.setText("" + c.getCustomerName());
             this.jTextField7.setText("" + c.getAddress());
             this.jTextField8.setText("" + c.getUserName());
-            this.jPasswordField1.setText("" + c.getPassword());
         }
     }//GEN-LAST:event_jList3ValueChanged
 
@@ -830,7 +807,6 @@ public class ManagerWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -845,7 +821,6 @@ public class ManagerWindow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -869,7 +844,8 @@ public class ManagerWindow extends javax.swing.JFrame {
         DefaultListModel<Department> model = new DefaultListModel();
 
         // TODO : "ManagerWindow class" make query to get All Department in shop and make it as ArrayList<Department>
-        // query must be method created in DBConnection class
+        // query must be method created in DAO class
+        // call Functions from controllers "the controller define above"
         ArrayList<Department> listDepartment = null;// this object of ArrayList<Department> contains Department class
         for (Department department : listDepartment) {
             model.addElement(department);
@@ -886,7 +862,8 @@ public class ManagerWindow extends javax.swing.JFrame {
         DefaultListModel<Customer> model = new DefaultListModel();
 
         // TODO : "ManagerWindow class" make query to get All customer in shop and make it as ArrayList<Customer> to display in JLIST
-        // query must be method created in DBConnection class
+        // query must be method created in DAO class
+        // call Functions from controllers "the controller define above"
         ArrayList<Customer> listCustomers = null;// this object of ArrayList<Customer>  contains Customer class
         for (Customer customer : listCustomers) {
             model.addElement(customer);
@@ -898,7 +875,6 @@ public class ManagerWindow extends javax.swing.JFrame {
         this.jTextField6.setText("");
         this.jTextField7.setText("");
         this.jTextField8.setText("");
-        this.jPasswordField1.setText("");
     }
 
     public void refrshComboBox(ArrayList<Department> listDepartment) {
@@ -920,7 +896,8 @@ public class ManagerWindow extends javax.swing.JFrame {
 
     public void addInListProduct(String idDepartment) {
         // TODO : "ManagerWindow class" make query to get list of product for specific Department (idDepartment) in shop and make it as Department 
-        // query must be method created in DBConnection class
+        // query must be method created in DAO class
+        // call Functions from controllers "the controller define above"
         Department department = null;// this object of Department contains ArrayList<Product>        
         DefaultListModel<Product> model = new DefaultListModel();
 

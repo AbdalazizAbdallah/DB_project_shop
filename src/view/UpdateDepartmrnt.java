@@ -1,6 +1,6 @@
 package view;
 
-import controller.UpdateDepartmentActionListener;
+import controller.interfaceListeners.UpdateDepartmentActionListener;
 import java.awt.HeadlessException;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;

@@ -1,7 +1,7 @@
 package view;
 
 import Helpers.ConstantHelper;
-import controller.InsertNewCustomerActionListener;
+import controller.interfaceListeners.InsertNewCustomerActionListener;
 import java.awt.HeadlessException;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -228,7 +228,7 @@ public class AddNewCustomar extends javax.swing.JFrame {
                     Customer customer = new Customer(idCustomer, name, address, user, password);
                     boolean insertation = customerActionListener.insertNewCustomerListener(customer);
                     if (insertation) {
-                        JOptionPane.showMessageDialog(this, "Customer adding susscefly");
+                        JOptionPane.showMessageDialog(this, "Customer adding susscefly \n YOUR password: "+password);
                         this.dispose();
                     } else {
                         System.out.println("--------------------------");

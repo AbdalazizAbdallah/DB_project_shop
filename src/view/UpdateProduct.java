@@ -1,7 +1,7 @@
 package view;
 
 import Helpers.ConstantHelper;
-import controller.UpdateProductActionListener;
+import controller.interfaceListeners.UpdateProductActionListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;

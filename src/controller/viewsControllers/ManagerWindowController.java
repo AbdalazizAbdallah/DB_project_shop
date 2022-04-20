@@ -3,17 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controller.viewsControllers;
 
-import model.Customer;
-import model.Department;
+import model.DAO;
 
 /**
  *
  * @author Abdalaziz Abdallah
  */
-public interface UpdateCustomerActionListener {
-    
-        void updateCustomerListener(Customer customer);
+public class ManagerWindowController {
+
+    private DAO theDAO;
+
+    public ManagerWindowController() {
+        this.theDAO = new DAO();
+    }
 
 }

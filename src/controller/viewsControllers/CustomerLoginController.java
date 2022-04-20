@@ -3,17 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controller.viewsControllers;
 
-import model.Department;
-import model.Product;
+import model.DAO;
 
 /**
  *
  * @author Abdalaziz Abdallah
  */
-public interface InsertNewProductActionListener {
-    
-     boolean insertNewProductListener(Product product,String idDepartment);
-   
+public class CustomerLoginController {
+
+    private DAO theDAO;
+
+    public CustomerLoginController() {
+        this.theDAO = new DAO();
+    }
+
 }

@@ -1,6 +1,6 @@
 package view;
 
-import controller.UpdateCustomerActionListener;
+import controller.interfaceListeners.UpdateCustomerActionListener;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -30,7 +30,6 @@ public class UpdateCustomer extends javax.swing.JFrame {
         this.jTextField6.setText("" + customer.getCustomerName());
         this.jTextField7.setText("" + customer.getAddress());
         this.jTextField8.setText("" + customer.getUserName());
-        this.jTextField9.setText("" + customer.getPassword());
     }
 
     /**
@@ -49,10 +48,8 @@ public class UpdateCustomer extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         buttonNewCustomer = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         cancel = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -89,9 +86,6 @@ public class UpdateCustomer extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(5, 5, 78));
         jLabel12.setText("Customer Name  : ");
 
-        jTextField9.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        jTextField9.setForeground(new java.awt.Color(5, 5, 78));
-
         jTextField7.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(5, 5, 78));
 
@@ -103,10 +97,6 @@ public class UpdateCustomer extends javax.swing.JFrame {
                 cancelActionPerformed(evt);
             }
         });
-
-        jLabel15.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(5, 5, 78));
-        jLabel15.setText("Password : ");
 
         jLabel14.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(5, 5, 78));
@@ -153,15 +143,10 @@ public class UpdateCustomer extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(67, 67, 67)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel15)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel14)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(buttonNewCustomer)
                                 .addGap(68, 68, 68)
@@ -193,15 +178,11 @@ public class UpdateCustomer extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
+                .addGap(71, 71, 71)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonNewCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -220,14 +201,14 @@ public class UpdateCustomer extends javax.swing.JFrame {
 
     private void buttonNewCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewCustomerActionPerformed
         try {
-            if (!(jTextField6.getText().equals("") || jTextField7.getText().equals("") || jTextField8.getText().equals("") || jTextField9.getText().equals(""))) {
+            if (!(jTextField6.getText().equals("") || jTextField7.getText().equals("") || jTextField8.getText().equals("") 
+                   )) {
                 String name = jTextField6.getText();
                 String address = jTextField7.getText();
                 String user = jTextField8.getText();
-                String password = jTextField9.getText();
                 String idCustomer = jTextField5.getText();
                 
-                Customer customer = new Customer(idCustomer, name, address, user, password);
+                Customer customer = new Customer(idCustomer, name, address, user);
                 
                 JOptionPane.showMessageDialog(this, "Updating Customer successfully");
                 updateCustomerActionListener.updateCustomerListener(customer);
@@ -258,14 +239,12 @@ public class UpdateCustomer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 
 }

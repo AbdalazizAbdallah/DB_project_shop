@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controller.interfaceListeners;
 
-import model.Customer;
+import model.Product;
 
 /**
  *
  * @author Abdalaziz Abdallah
  */
-public interface IdentifierCustomerListener {
-   
-    void idCustomerListener(Customer customer);
+public interface RemoveProductActionListener {
     
+    void removeProductListener(Product product);
     
 }

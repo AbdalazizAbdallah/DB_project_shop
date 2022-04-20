@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
-
-import model.Department;
+package controller.interfaceListeners;
 
 /**
  *
  * @author Abdalaziz Abdallah
  */
-public interface InsertNewDepartmentActionListener {
-    
-    boolean insertNewDepartmentListener(Department department);
+public interface ConfirmOrderActionListener {
+    void ConfirmOrderListener(String address);
 }

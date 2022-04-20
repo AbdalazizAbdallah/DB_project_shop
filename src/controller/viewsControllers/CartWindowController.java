@@ -3,12 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controller.viewsControllers;
+
+import model.DAO;
 
 /**
  *
  * @author Abdalaziz Abdallah
  */
-public interface ConfirmOrderActionListener {
-    void ConfirmOrderListener(String address);
+public class CartWindowController {
+  
+    private DAO theDAO;
+
+    public CartWindowController() {
+        this.theDAO = new DAO();
+    } 
 }

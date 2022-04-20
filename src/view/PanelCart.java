@@ -1,6 +1,6 @@
 package view;
 
-import controller.RemoveProductActionListener;
+import controller.interfaceListeners.RemoveProductActionListener;
 import model.Product;
 
 /*

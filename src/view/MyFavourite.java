@@ -1,5 +1,6 @@
 package view;
 
+import controller.viewsControllers.CustomerWindowController;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import model.Product;
@@ -18,8 +19,10 @@ public class MyFavourite extends javax.swing.JFrame {
     /**
      * Creates new form MyFavourite
      */
+    private CustomerWindowController customerWindowController;
     public MyFavourite(String customerId) {
         initComponents();
+        customerWindowController = new CustomerWindowController();
         reshList(customerId);
     }
 
@@ -133,8 +136,9 @@ public class MyFavourite extends javax.swing.JFrame {
 
         /* TODO : "MyFavourite class" make query to get Customar's Favourite List of product 
               
-                make function in class DBconnection 
-                this method do query in database and return ArrayList<Product>      
+                make function in class DAO 
+                this method do query in database and return ArrayList<Product>   
+        // call Functions from controllers "the controller define above"
          */
         ArrayList<Product> listOfProduct = null; // using customerId 
 

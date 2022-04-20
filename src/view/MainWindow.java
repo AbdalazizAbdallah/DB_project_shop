@@ -1,9 +1,9 @@
 package view;
 
 import Helpers.ConstantHelper;
-import Helpers.DBConnection;
-import controller.IdentifierCustomerListener;
-import controller.MyActionButtonLisenters;
+import model.DBConnection;
+import controller.interfaceListeners.IdentifierCustomerListener;
+import controller.interfaceListeners.MyActionButtonLisenters;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -27,12 +27,10 @@ public class MainWindow extends javax.swing.JFrame {
      */
     private CustomerLogin customerLogin = null;
     private ManagerLogin managerLogin = null;
-    private DBConnection instance = null;
 
     public MainWindow() {
         initComponents();
         this.setLocationRelativeTo(null);
-        instance = DBConnection.getInstance();
     }
 
     /**

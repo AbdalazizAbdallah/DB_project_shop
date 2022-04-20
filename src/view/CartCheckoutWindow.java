@@ -1,7 +1,8 @@
 package view;
 
-import controller.ConfirmOrderActionListener;
-import controller.RemoveProductActionListener;
+import controller.interfaceListeners.ConfirmOrderActionListener;
+import controller.interfaceListeners.RemoveProductActionListener;
+import controller.viewsControllers.CartCheckoutWindowController;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
@@ -28,12 +29,14 @@ public class CartCheckoutWindow extends javax.swing.JFrame {
     private String customarID;
 
     private ConfirmOrderActionListener confirmOrderActionListener;
+    private CartCheckoutWindowController cartCheckoutWindowController;
 
     public CartCheckoutWindow(String customarID, ConfirmOrderActionListener confirmOrderActionListener) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.customarID = customarID;
         this.confirmOrderActionListener = confirmOrderActionListener;
+        cartCheckoutWindowController = new CartCheckoutWindowController();
         addPanelsCheckout();
     }
 
@@ -326,9 +329,10 @@ public class CartCheckoutWindow extends javax.swing.JFrame {
         jPanel2.validate();
         jPanel2.repaint();
 
-        // TODO : "CartWindow class" make query to get cart of customar using Customer id
-        // query must be method created in DBConnection class
+        // TODO : "CartCheckoutWindow class" make query to get cart of customar using Customer id
+        // query must be method created in DAO class
         // this object of Department contains ArrayList<Product>  
+        // call Functions from controllers "the controller define above"
         ArrayList<Product> arrayList = null;
 
         int counter = 0;
@@ -342,8 +346,8 @@ public class CartCheckoutWindow extends javax.swing.JFrame {
             counter++;
         }
 
-        // TODO : "CartWindow class" make query to get Sum prices of product cart customar using Customer id
-        // query must be method created in DBConnection class
+        // TODO : "CartCheckoutWindow class" make query to get Sum prices of product cart customar using Customer id
+        // query must be method created in DAO class
         double sum = 0; // 
         jLabel15.setText("" + sum + " $");
 

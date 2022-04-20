@@ -5,6 +5,8 @@ import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -58,15 +60,16 @@ public class ConstantHelper {
         return true;
     }
 
-    private static String formatString(String greet , String customerName ){  
+    private static String formatString(String greet, String customerName) {
         return "<html>"
-                + greet+"<br>"
+                + greet + "<br>"
                 + customerName
                 + "<html>";
-    
+
     }
-    public static String [] setupGreeting(String customerName) {
-        String [] strings = new String[2];
+
+    public static String[] setupGreeting(String customerName) {
+        String[] strings = new String[2];
         SimpleDateFormat dayInMonthNumber = new SimpleDateFormat("dd", Locale.getDefault());
         String formattedDayInMonthNumber = dayInMonthNumber.format(new Date()).toString();
 
@@ -75,13 +78,13 @@ public class ConstantHelper {
 
         int day = Integer.parseInt(formattedDayInMonthNumber);
         if (day == 1) {
-            strings[0]=(formattedDate2 + "" + formattedDayInMonthNumber + "" + "st");
+            strings[0] = (formattedDate2 + "" + formattedDayInMonthNumber + "" + "st");
         } else if (day == 2) {
-            strings[0]=(formattedDate2 + "" + formattedDayInMonthNumber + "" + "nd");
+            strings[0] = (formattedDate2 + "" + formattedDayInMonthNumber + "" + "nd");
         } else if (day == 3) {
-            strings[0]=(formattedDate2 + "" + formattedDayInMonthNumber + "" + "rd");
+            strings[0] = (formattedDate2 + "" + formattedDayInMonthNumber + "" + "rd");
         } else {
-            strings[0]=(formattedDate2 + "" + formattedDayInMonthNumber + "" + "th");
+            strings[0] = (formattedDate2 + "" + formattedDayInMonthNumber + "" + "th");
         }
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH.mm", Locale.getDefault());
@@ -89,35 +92,57 @@ public class ConstantHelper {
 
         double parseInt = Double.parseDouble(formattedDate);
         if (0 <= parseInt && parseInt <= 11.59) {
-            strings[1]=(ConstantHelper.formatString("Good Morining", customerName));
+            strings[1] = (ConstantHelper.formatString("Good Morining", customerName));
         } else if (12 <= parseInt && parseInt <= 4.59) {
-            strings[1]=(ConstantHelper.formatString("Good Afternoon", customerName));
+            strings[1] = (ConstantHelper.formatString("Good Afternoon", customerName));
         } else {
-            strings[1]=(ConstantHelper.formatString("Good Evening", customerName));
+            strings[1] = (ConstantHelper.formatString("Good Evening", customerName));
         }
 
         return strings;
     }
-    
-    public static Point getXY(){
-    
-        
-            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-            int x = MouseInfo.getPointerInfo().getLocation().x;
-            int y = MouseInfo.getPointerInfo().getLocation().y;
+    public static Point getXY() {
 
-            int width = (int) screenSize.getWidth();
-            int height = (int) screenSize.getHeight();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-            if (width < x + 371) {
-                x -= 371;
-            }
-            if (height < y + 465) {
-                y -= 465;
-            }
+        int x = MouseInfo.getPointerInfo().getLocation().x;
+        int y = MouseInfo.getPointerInfo().getLocation().y;
 
-         return new Point(x, y);
+        int width = (int) screenSize.getWidth();
+        int height = (int) screenSize.getHeight();
+
+        if (width < x + 371) {
+            x -= 371;
+        }
+        if (height < y + 465) {
+            y -= 465;
+        }
+
+        return new Point(x, y);
     }
 
+    public static String encryptPass(String password) {
+        try {
+            //retrieve instance of the encryptor of SHA-256
+            MessageDigest digestor = MessageDigest.getInstance("SHA-256");
+//retrieve bytes to encrypt
+            byte[] encodedhash = digestor.digest(password.getBytes(StandardCharsets.UTF_8));
+            StringBuilder encryptionValue = new StringBuilder(2 * encodedhash.length);
+//perform encryption
+            for (int i = 0; i < encodedhash.length; i++) {
+                String hexVal = Integer.toHexString(0xff & encodedhash[i]);
+                if (hexVal.length() == 1) {
+                    encryptionValue.append('0');
+                }
+                encryptionValue.append(hexVal);
+            }
+//return encrypted value
+            return encryptionValue.toString();
+        } catch (Exception ex) {
+            return ex.getMessage();
+        }
+    }
+    
+   
 }

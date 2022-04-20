@@ -1,7 +1,7 @@
 package view;
 
-
-import controller.IdentifierCustomerListener;
+import controller.interfaceListeners.IdentifierCustomerListener;
+import controller.viewsControllers.CustomerLoginController;
 import javax.swing.JOptionPane;
 
 /*
@@ -15,12 +15,14 @@ import javax.swing.JOptionPane;
  */
 public class CustomerLogin extends javax.swing.JFrame {
 
-    IdentifierCustomerListener identifierCustomerListener;
+    private IdentifierCustomerListener identifierCustomerListener;
+    private CustomerLoginController customerLoginController;
 
     public CustomerLogin(IdentifierCustomerListener identifierCustomerListener) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.identifierCustomerListener = identifierCustomerListener;
+        customerLoginController = new CustomerLoginController();
     }
 
     /**
@@ -229,21 +231,19 @@ public class CustomerLogin extends javax.swing.JFrame {
 
     public void login() throws Exception {
         String username = jTextField1.getText();
-        String pass  = String.copyValueOf(jPasswordField1.getPassword());
+        String pass = String.copyValueOf(jPasswordField1.getPassword());
         if (!(username.equals("") || pass.equals(""))) {
-                
+
             /* TODO : "CustomerLogin class" make query to check customer exists or not to login his profile 
               
-                make function in class DBconnection 
+                make function in class DAO 
                 this method do query in database and return his id if he is exists
                 pass Customer object to method this.identifierCustomerListener.idCustomerListener
-            
-            */
-            
-            //this.identifierCustomerListener.idCustomerListener(/*id customer*/);
-            
-           
+                                    // call Functions from controllers "the controller define above"
 
+            
+             */
+            //this.identifierCustomerListener.idCustomerListener(/*id customer*/);
         } else {
             throw new Exception("Watch out !!\n" + "You can not leave behind an empty field");
         }

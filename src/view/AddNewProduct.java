@@ -1,7 +1,7 @@
 package view;
 
 import Helpers.ConstantHelper;
-import controller.InsertNewProductActionListener;
+import controller.interfaceListeners.InsertNewProductActionListener;
 import java.util.ArrayList;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
@@ -254,6 +254,7 @@ public class AddNewProduct extends javax.swing.JFrame {
                 int iQ = Integer.parseInt(quantiy.getText());
 
                 //TODO : "AddNewProduct class" generate ID for Product example 'eb-101' e-book accroding department
+                // insert function in constantHelper to generate ID for product
                 Product product = new Product(nameProduct.getText(), dprice, iQ, description.getText());
                 //product.setIDProduct("eb-101");
                 String idDepartment = ((Department) combo.getSelectedItem()).getDepartmentID();

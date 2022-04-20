@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Helpers;
+package model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -32,7 +32,8 @@ public class DBConnection {
         return instance;
     }
 
-    public DBConnection() {
+    //TODO: "DBConnection class" insert localhost || port || username || password
+    private DBConnection() {
         conn = createDBConnection("localhost","1521","lab1","lab1");
     }
     
@@ -59,11 +60,8 @@ public class DBConnection {
         return null;
     }
     
-    //TODO: "DBConnection class" insert all queries as function here 
-    
-    
-    
-    
-    
-    
+    public Connection getConn() {
+        return conn;
+    }
+     
 }
