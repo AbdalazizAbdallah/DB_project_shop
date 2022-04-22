@@ -34,7 +34,7 @@ public class DBConnection {
 
     //TODO: "DBConnection class" insert localhost || port || username || password
     private DBConnection() {
-        conn = createDBConnection("localhost","1521","lab1","lab1");
+        conn = createDBConnection("localhost","1521","shop","shoping2022");
     }
     
     

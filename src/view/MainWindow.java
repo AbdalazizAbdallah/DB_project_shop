@@ -4,6 +4,7 @@ import Helpers.ConstantHelper;
 import model.DBConnection;
 import controller.interfaceListeners.IdentifierCustomerListener;
 import controller.interfaceListeners.MyActionButtonLisenters;
+import controller.viewsControllers.MainWindowController;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -27,10 +28,12 @@ public class MainWindow extends javax.swing.JFrame {
      */
     private CustomerLogin customerLogin = null;
     private ManagerLogin managerLogin = null;
+    private MainWindowController mainWindowController;
 
     public MainWindow() {
         initComponents();
         this.setLocationRelativeTo(null);
+        mainWindowController = new MainWindowController();
     }
 
     /**
@@ -209,12 +212,18 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     public void loginManger() {
+        // TODO : "ManagerWindow class" Make query to register login as Manager time
+     // query must be method created in DAO class
+    // call Functions from controllers "the controller define above"
         ManagerWindow managerWindow = new ManagerWindow();
         managerWindow.setVisible(true);
         this.dispose();
     }
 
     public void loginCustomer(Customer customer) {
+           // TODO : "ManagerWindow class" Make query to register login as Customer time
+     // query must be method created in DAO class
+    // call Functions from controllers "the controller define above"
          CustomarWindow customarWindow = new CustomarWindow(customer);
          customarWindow.setVisible(true);
          this.dispose();

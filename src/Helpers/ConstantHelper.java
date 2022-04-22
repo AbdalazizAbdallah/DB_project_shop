@@ -57,6 +57,40 @@ public class ConstantHelper {
 
     public static boolean checkIDvalid(String text) {
 
+        int a = Integer.parseInt(text);
+        int i = a % 10;
+        int b = a / 10;
+
+        int sum1 = 0, sum2 = 0, m = 0, j, k, c;
+        while (b > 0) {
+            j = b % 10;
+            if (m % 2 == 0) {
+                k = 2 * j;
+                if (k > 9) {
+                    c = k % 10;
+                    c += k / 10;
+                    sum1 += c;
+                } else {
+                    sum1 += k;
+                }
+            } else {
+                sum2 += j;
+            }
+            b /= 10;
+            m++;
+        }
+        int sum = sum1 + sum2;
+
+        sum %= 10;
+
+        sum = 10 - sum;
+        if (sum == 10) {
+            sum = 0;
+        }
+        if (sum != i) {
+            return false;
+        }
+
         return true;
     }
 
@@ -143,6 +177,5 @@ public class ConstantHelper {
             return ex.getMessage();
         }
     }
-    
-   
+
 }
