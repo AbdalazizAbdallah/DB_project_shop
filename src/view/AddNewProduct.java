@@ -27,6 +27,7 @@ public class AddNewProduct extends javax.swing.JFrame {
      * Creates new form AddNewProduct
      */
     InsertNewProductActionListener insertNewProductActionListener;
+    private boolean isDisposed = false;
 
     public AddNewProduct(DefaultComboBoxModel<Department> model, InsertNewProductActionListener insertNewProductActionListener) {
         initComponents();
@@ -310,4 +311,13 @@ public class AddNewProduct extends javax.swing.JFrame {
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
+    @Override
+    public void dispose() {
+        isDisposed = true;
+        super.dispose();
+    }
+
+    public boolean disposed() {
+        return isDisposed;
+    }
 }

@@ -25,6 +25,7 @@ public class UpdateProduct extends javax.swing.JFrame {
      */
     private Product product;
     private UpdateProductActionListener productActionListener;
+    private boolean isDisposed = false;
 
     public UpdateProduct(Product product, Department department, UpdateProductActionListener productActionListener) {
         initComponents();
@@ -254,9 +255,9 @@ public class UpdateProduct extends javax.swing.JFrame {
                 Product product = new Product(nameProduct.getText(), dprice, iQ, description.getText());
                 product.setDepartmentID(this.product.getDepartmentID());
                 product.setIDProduct(this.product.getIDProduct());
-                
+
                 productActionListener.updateProductListener(product);
-                
+
                 this.dispose();
                 JOptionPane.showMessageDialog(this, "Prodect compelet susscefly");
             } else {
@@ -304,5 +305,13 @@ public class UpdateProduct extends javax.swing.JFrame {
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
+    @Override
+    public void dispose() {
+        isDisposed = true;
+        super.dispose();
+    }
 
+    public boolean disposed() {
+        return isDisposed;
+    }
 }

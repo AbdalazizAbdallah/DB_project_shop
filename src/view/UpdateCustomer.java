@@ -21,6 +21,7 @@ public class UpdateCustomer extends javax.swing.JFrame {
      * Creates new form UpCustomer
      */
     private UpdateCustomerActionListener updateCustomerActionListener;
+    private boolean isDisposed = false;
 
     public UpdateCustomer(Customer customer, UpdateCustomerActionListener updateCustomerActionListener) {
         initComponents();
@@ -201,23 +202,22 @@ public class UpdateCustomer extends javax.swing.JFrame {
 
     private void buttonNewCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewCustomerActionPerformed
         try {
-            if (!(jTextField6.getText().equals("") || jTextField7.getText().equals("") || jTextField8.getText().equals("") 
-                   )) {
+            if (!(jTextField6.getText().equals("") || jTextField7.getText().equals("") || jTextField8.getText().equals(""))) {
                 String name = jTextField6.getText();
                 String address = jTextField7.getText();
                 String user = jTextField8.getText();
                 String idCustomer = jTextField5.getText();
-                
+
                 Customer customer = new Customer(idCustomer, name, address, user);
-                
+
                 JOptionPane.showMessageDialog(this, "Updating Customer successfully");
                 updateCustomerActionListener.updateCustomerListener(customer);
                 this.dispose();
-                
+
             } else {
                 throw new Exception("Watch out !!\n" + "You can not leave behind an empty field");
             }
-            
+
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Watch out !!", JOptionPane.ERROR_MESSAGE);
         }
@@ -246,5 +246,13 @@ public class UpdateCustomer extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
+ @Override
+    public void dispose() {
+        isDisposed = true;
+        super.dispose();
+    }
 
+    public boolean disposed() {
+        return isDisposed;
+    }
 }

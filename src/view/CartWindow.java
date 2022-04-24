@@ -27,6 +27,8 @@ public class CartWindow extends javax.swing.JFrame {
     private PanelCart panelCart;
     private String customarID;
     private CartWindowController cartWindowController;
+    private CartCheckoutWindow checkoutWindow;
+    private boolean isDisposed = false;
 
     public CartWindow(String customarID) {
         initComponents();
@@ -171,28 +173,30 @@ public class CartWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ptcjButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ptcjButton12ActionPerformed
-        CartCheckoutWindow checkoutWindow = new CartCheckoutWindow(customarID, new ConfirmOrderActionListener() {
-            @Override
-            public void ConfirmOrderListener(String address) {
+        if (!(checkoutWindow != null && checkoutWindow.isVisible())) {
+            checkoutWindow = new CartCheckoutWindow(customarID, new ConfirmOrderActionListener() {
+                @Override
+                public void ConfirmOrderListener(String address) {
 
-                // TODO : "CartWindow class" generate order id (order_id,customarID,,address) and insert orders_done
-                // TODO : "CartWindow class" insert for each product with order_id into table orders
-                // TODO : "CartWindow class" update products info in shop 
-                // TODO : "CartWindow class" clear customer's cart
-                
-               // call Functions from controllers "the controller define above"
+                    // TODO : "CartWindow class" generate order id (order_id,customarID,,address) and insert orders_done
+                    // TODO : "CartWindow class" insert for each product with order_id into table orders
+                    // TODO : "CartWindow class" update products info in shop 
+                    // TODO : "CartWindow class" clear customer's cart
+                    // call Functions from controllers "the controller define above"
+                    JOptionPane.showMessageDialog(CartWindow.this, "Your order id submit sucessfully \n Thank you !!");
 
-                JOptionPane.showMessageDialog(CartWindow.this, "Your order id submit sucessfully \n Thank you !!");
+                    CartWindow.this.dispose();
 
-                CartWindow.this.dispose();
-
-            }
-        });
-        checkoutWindow.setVisible(true);
+                }
+            });
+            checkoutWindow.setVisible(true);
+        }
     }//GEN-LAST:event_ptcjButton12ActionPerformed
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
-        this.dispose();
+        if ((checkoutWindow == null || checkoutWindow.disposed())) {
+            this.dispose();
+        }
     }//GEN-LAST:event_jLabel16MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -214,7 +218,6 @@ public class CartWindow extends javax.swing.JFrame {
         // TODO : "CartWindow class" make query to get cart of customar using Customer id
         // query must be method created in DAO class
         // call Functions from controllers "the controller define above"
-
         // this object of Department contains ArrayList<Product>  
         ArrayList<Product> arrayList = null;
 
@@ -225,7 +228,7 @@ public class CartWindow extends javax.swing.JFrame {
                 public void removeProductListener(Product product) {
                     // TODO : "CartWindow class" make query to remove product from customar's cart
                     // query must be method created in DAO class
-                        // call Functions from controllers "the controller define above"
+                    // call Functions from controllers "the controller define above"
 
                     getCart();// reload cart
                 }
@@ -247,4 +250,13 @@ public class CartWindow extends javax.swing.JFrame {
         jLabel19.setText("" + sum + " $");
     }
 
+    @Override
+    public void dispose() {
+        isDisposed = true;
+        super.dispose();
+    }
+
+    public boolean disposed() {
+        return isDisposed;
+    }
 }

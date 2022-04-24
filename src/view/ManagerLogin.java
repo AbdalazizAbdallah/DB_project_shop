@@ -19,6 +19,7 @@ public class ManagerLogin extends javax.swing.JFrame {
      * Creates new form ManagerLogin
      */
     MyActionButtonLisenters actionButtonLisenters;
+    private boolean isDisposed = false ;
 
     public ManagerLogin(MyActionButtonLisenters actionButtonLisenters) {
         initComponents();
@@ -220,4 +221,14 @@ public class ManagerLogin extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void dispose() {
+        isDisposed = true;
+        super.dispose();
+    }
+
+    public boolean disposed() {
+        return isDisposed;
+    }
 }

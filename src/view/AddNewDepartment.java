@@ -24,6 +24,7 @@ public class AddNewDepartment extends javax.swing.JFrame {
      * Creates new form AddNewDepartment
      */
     private InsertNewDepartmentActionListener insertNewDepartmentActionListener;
+    private boolean isDisposed = false;
 
     public AddNewDepartment(InsertNewDepartmentActionListener insertNewDepartmentActionListener) {
         initComponents();
@@ -186,7 +187,7 @@ public class AddNewDepartment extends javax.swing.JFrame {
                 String s1 = textNameDerpartment.getText();
                 String s2 = textDescriptionDerpartment.getText();
                 //TODO : "AddNewDepartment class" genrate ID FOR Department and add into DB
-                                
+
                 Department d = new Department(s1, s2);
                 //d.setDepartmentID("");
                 boolean succ = insertNewDepartmentActionListener.insertNewDepartmentListener(d);
@@ -219,4 +220,13 @@ public class AddNewDepartment extends javax.swing.JFrame {
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
+    @Override
+    public void dispose() {
+        isDisposed = true;
+        super.dispose();
+    }
+
+    public boolean disposed() {
+        return isDisposed;
+    }
 }

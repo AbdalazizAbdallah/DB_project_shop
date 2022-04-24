@@ -29,6 +29,7 @@ public class MainWindow extends javax.swing.JFrame {
     private CustomerLogin customerLogin = null;
     private ManagerLogin managerLogin = null;
     private MainWindowController mainWindowController;
+    private boolean isDisposed = false;
 
     public MainWindow() {
         initComponents();
@@ -213,20 +214,20 @@ public class MainWindow extends javax.swing.JFrame {
 
     public void loginManger() {
         // TODO : "ManagerWindow class" Make query to register login as Manager time
-     // query must be method created in DAO class
-    // call Functions from controllers "the controller define above"
+        // query must be method created in DAO class
+        // call Functions from controllers "the controller define above"
         ManagerWindow managerWindow = new ManagerWindow();
         managerWindow.setVisible(true);
         this.dispose();
     }
 
     public void loginCustomer(Customer customer) {
-           // TODO : "ManagerWindow class" Make query to register login as Customer time
-     // query must be method created in DAO class
-    // call Functions from controllers "the controller define above"
-         CustomarWindow customarWindow = new CustomarWindow(customer);
-         customarWindow.setVisible(true);
-         this.dispose();
+        // TODO : "ManagerWindow class" Make query to register login as Customer time
+        // query must be method created in DAO class
+        // call Functions from controllers "the controller define above"
+        CustomarWindow customarWindow = new CustomarWindow(customer);
+        customarWindow.setVisible(true);
+        this.dispose();
     }
 
     /**
@@ -276,4 +277,15 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void dispose() {
+        isDisposed = true;
+        super.dispose();
+    }
+
+    public boolean disposed() {
+        return isDisposed;
+    }
+
 }

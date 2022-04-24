@@ -20,6 +20,7 @@ public class MyFavourite extends javax.swing.JFrame {
      * Creates new form MyFavourite
      */
     private CustomerWindowController customerWindowController;
+    private boolean isDisposed = false;
     public MyFavourite(String customerId) {
         initComponents();
         customerWindowController = new CustomerWindowController();
@@ -147,6 +148,16 @@ public class MyFavourite extends javax.swing.JFrame {
         }
         this.jList2.setModel(model);
 
+    }
+    
+     @Override
+    public void dispose() {
+        isDisposed = true;
+        super.dispose();
+    }
+
+    public boolean disposed() {
+        return isDisposed;
     }
 
 }

@@ -45,12 +45,13 @@ public class ManagerWindow extends javax.swing.JFrame {
     private AddNewCustomar addNewCustomar = null;
     private UpdateCustomer updateCustomer = null;
 
-
     private ManagerWindowController managerWindowController;
+    private boolean isDisposed = false;
+
     public ManagerWindow() {
 
         initComponents();
-        
+
         // TODO :  "ManagerWindow class" remove comment when finish from selection query
         //addInListDepartment();
         //addInListCustomer();
@@ -111,7 +112,6 @@ public class ManagerWindow extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jLabel16 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -573,17 +573,6 @@ public class ManagerWindow extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Customer", jPanel3);
 
-        jLabel16.setFont(new java.awt.Font("Tekton Pro Ext", 0, 20)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(218, 15, 23));
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("X");
-        jLabel16.setToolTipText("");
-        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel16MouseClicked(evt);
-            }
-        });
-
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/home.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -595,28 +584,21 @@ public class ManagerWindow extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(30, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel16)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(32, 32, 32)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -665,7 +647,6 @@ public class ManagerWindow extends javax.swing.JFrame {
                     // TODO : "ManagerWindow class" make query to add new Department in DB and reload all department in JLIST
                     // query must be method created in DAO class 
                     // here Insert query function if the insertation successfully return true
-                    
                     // call Functions from controllers "the controller define above"
                     //don't remove this
                     addInListDepartment();
@@ -686,7 +667,6 @@ public class ManagerWindow extends javax.swing.JFrame {
                     // TODO : "ManagerWindow class" make query to add new customer in DB and reload all customer in JLIST
                     // query must be method created in DAO class 
                     // here Insert query function if the insertation successfully return true
-
                     // call Functions from controllers "the controller define above"
                     //don't remove this
                     addInListCustomer();// reload customers
@@ -730,7 +710,6 @@ public class ManagerWindow extends javax.swing.JFrame {
                         // TODO : "ManagerWindow class" make query to update product in DB and reload all product for specific department in JLIST 
                         // query must be method created in DAO class 
                         // here update query function
-                        
                         // call Functions from controllers "the controller define above"
                         //don't remove this
                         addInListProduct(product.getDepartmentID());
@@ -753,7 +732,6 @@ public class ManagerWindow extends javax.swing.JFrame {
                     // TODO : "ManagerWindow class" make query to add new product in DB accroding idDepartment and reload all product in JLIST
                     // query must be method created in DAO class 
                     // here Insert query function if the insertation successfully return true
-                    
                     // call Functions from controllers "the controller define above"
                     //don't remove this
                     addInListProduct(idDepartment);
@@ -800,19 +778,23 @@ public class ManagerWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jList3ValueChanged
 
-    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_jLabel16MouseClicked
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    // TODO : "ManagerWindow class" Make query to register logout time
-     // query must be method created in DAO class
-    // call Functions from controllers "the controller define above"
-     
+        // TODO : "ManagerWindow class" Make query to register logout time
+        // query must be method created in DAO class
+        // call Functions from controllers "the controller define above"
+
         //don't remove this
-        this.dispose();
-        MainWindow mainWindow = new MainWindow();
-        mainWindow.setVisible(true);
+        if ((newDepartment == null || newDepartment.disposed())
+                && (updateDepartmrnt == null || updateDepartmrnt.disposed())
+                && (updateProduct == null || updateProduct.disposed())
+                && (addNewProduct == null || addNewProduct.disposed())
+                && (addNewCustomar == null || addNewCustomar.disposed())
+                && (updateCustomer == null || updateCustomer.disposed())) {
+
+            this.dispose();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.setVisible(true);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -831,7 +813,6 @@ public class ManagerWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -936,4 +917,13 @@ public class ManagerWindow extends javax.swing.JFrame {
         this.descriptionProduct.setText("");
     }
 
+    @Override
+    public void dispose() {
+        isDisposed = true;
+        super.dispose();
+    }
+
+    public boolean disposed() {
+        return isDisposed;
+    }
 }

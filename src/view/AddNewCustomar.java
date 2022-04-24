@@ -23,6 +23,7 @@ public class AddNewCustomar extends javax.swing.JFrame {
      * Creates new form NewCustomar
      */
     private InsertNewCustomerActionListener customerActionListener;
+    private boolean isDisposed = false;
 
     public AddNewCustomar(InsertNewCustomerActionListener customerActionListener) {
         initComponents();
@@ -222,14 +223,14 @@ public class AddNewCustomar extends javax.swing.JFrame {
                 //genrate password consist five digits randomly
                 String password = ConstantHelper.getNewPassword();
                 String encrptPassword = ConstantHelper.encryptPass(password);
-                
+
                 boolean checkIDvalid = ConstantHelper.checkIDvalid(idCustomer);
 
                 if (checkIDvalid) {
                     Customer customer = new Customer(idCustomer, name, address, user, encrptPassword);
                     boolean insertation = customerActionListener.insertNewCustomerListener(customer);
                     if (insertation) {
-                        JOptionPane.showMessageDialog(this, "Customer adding susscefly \n YOUR password: "+password);
+                        JOptionPane.showMessageDialog(this, "Customer adding susscefly \n YOUR password: " + password);
                         this.dispose();
                     } else {
                         System.out.println("--------------------------");
@@ -277,4 +278,13 @@ public class AddNewCustomar extends javax.swing.JFrame {
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
+    @Override
+    public void dispose() {
+        isDisposed = true;
+        super.dispose();
+    }
+
+    public boolean disposed() {
+        return isDisposed;
+    }
 }

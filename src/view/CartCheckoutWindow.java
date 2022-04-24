@@ -30,6 +30,7 @@ public class CartCheckoutWindow extends javax.swing.JFrame {
 
     private ConfirmOrderActionListener confirmOrderActionListener;
     private CartCheckoutWindowController cartCheckoutWindowController;
+    private boolean isDisposed = false;
 
     public CartCheckoutWindow(String customarID, ConfirmOrderActionListener confirmOrderActionListener) {
         initComponents();
@@ -354,4 +355,13 @@ public class CartCheckoutWindow extends javax.swing.JFrame {
         jLabel17.setText("" + counter);
     }
 
+    @Override
+    public void dispose() {
+        isDisposed = true;
+        super.dispose();
+    }
+
+    public boolean disposed() {
+        return isDisposed;
+    }
 }
