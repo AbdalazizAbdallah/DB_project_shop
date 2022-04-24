@@ -2,7 +2,7 @@ package view;
 
 import Helpers.ConstantHelper;
 import controller.viewsControllers.CustomerWindowController;
-import model.DBConnection;
+import model.db.DBConnection;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.MouseInfo;

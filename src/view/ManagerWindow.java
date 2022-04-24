@@ -1,6 +1,6 @@
 package view;
 
-import model.DBConnection;
+import model.db.DBConnection;
 import controller.interfaceListeners.InsertNewCustomerActionListener;
 import controller.interfaceListeners.InsertNewDepartmentActionListener;
 import controller.interfaceListeners.InsertNewProductActionListener;

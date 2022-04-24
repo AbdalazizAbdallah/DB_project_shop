@@ -5,7 +5,7 @@
  */
 package controller.viewsControllers;
 
-import model.DAO;
+import model.db.DAO;
 
 /**
  *

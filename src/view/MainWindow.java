@@ -1,7 +1,7 @@
 package view;
 
 import Helpers.ConstantHelper;
-import model.DBConnection;
+import model.db.DBConnection;
 import controller.interfaceListeners.IdentifierCustomerListener;
 import controller.interfaceListeners.MyActionButtonLisenters;
 import controller.viewsControllers.MainWindowController;
