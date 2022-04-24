@@ -145,7 +145,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Georgia" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="User Name : "/>
+            <Property name="text" type="java.lang.String" value="Customer ID : "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">

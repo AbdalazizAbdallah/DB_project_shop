@@ -62,7 +62,7 @@ public class CustomerLogin extends javax.swing.JFrame {
         jTextField1.setText("12");
 
         jLabel2.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        jLabel2.setText("User Name : ");
+        jLabel2.setText("Customer ID : ");
 
         jLabel3.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         jLabel3.setText("Password :");
